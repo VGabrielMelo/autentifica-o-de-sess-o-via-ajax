@@ -5,7 +5,7 @@
   $json = file_get_contents('../dados/dados_para_load.json');
   $JsonData = json_decode($json,true);
 
-
+  #Fazendo o carregamentos dos dados
 	if ($_POST["operation"] == 'load') {
 		
 		if (isset($_SESSION["login"])) {
@@ -15,6 +15,8 @@
 			echo '{ "nome" : "undefined" }';
 		}
 		
+
+  # Realizando a tentativa de login pelos dados passados do HTML
 	} else if ($_POST["operation"] == 'login') {
 		if(!(isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW']))){
         echo '{ "status" : "Não foi possível realizar o Login." }';
@@ -31,17 +33,20 @@
         echo json_encode($JsonData);
 
 			} else {
-        echo '{ "status" : "Não foi possível realizar o Login." }';
+        echo '{ "status" : "Login não realizado." }';
 				 header('HTTP/1.0 401 Unauthorized');
 			 }
 		}
 
+  #Logout da sessão
 	} else if ($_POST["operation"] == 'logout') {
 		
 		session_destroy();
 		echo '{ "nome" : "undefined" }';
 		
-	}  else if ($_POST["operation"] == 'remoção') {
+
+  #Deletar uma atividade
+	}  else if ($_POST["operation"] == 'deletar') {
 
 		if (isset($_SESSION["login"])) {
       if (isset($_POST["index"]) && $_POST["index"] != ""){
@@ -62,7 +67,7 @@
       }
 
     } else {
-      echo '{ "status" : "Não foi possível realizar o Login." }';
+      echo '{ "status" : "Login não realizado." }';
       header('HTTP/1.0 401 Unauthorized');
     }
 
@@ -92,7 +97,7 @@
       }
 
     }else{
-      echo '{ "status" : "Não foi possível realizar o Login." }';
+      echo '{ "status" : "Login não realizado." }';
       header('HTTP/1.0 401 Unauthorized');
     }
   
@@ -122,7 +127,7 @@
       }
 
     }else{
-      echo '{ "status" : "Não foi possível realizar o Login." }';
+      echo '{ "status" : "Login não realizado." }';
       header('HTTP/1.0 401 Unauthorized');
     }
 
@@ -150,7 +155,7 @@
       }
 
     }else{
-      echo '{ "status" : "Não foi possível realizar o Login." }';
+      echo '{ "status" : "Login não realizado." }';
       header('HTTP/1.0 401 Unauthorized');
     }
 

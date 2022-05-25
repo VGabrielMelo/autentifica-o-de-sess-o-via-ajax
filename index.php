@@ -157,6 +157,7 @@
   $('#sessao_atividades').hide()
 
 
+  //Carregar os dados do arquivo .json
 	$( document ).ready(function() {
 		$( "#resultado" ).html("Login")
 		
@@ -214,6 +215,7 @@
 		})
 	})
 
+  // Realizar o Login
 	$( "#abrir_sessao" ).click(function(){
 		var v2 = $( "#login" ).val()
 		var v3 = $( "#password" ).val()
@@ -281,7 +283,7 @@
 		})
 	})
 	
-	
+	//Marcar tarefa como feita
   function markDone(row) {
     let index = row
     $.ajax({
@@ -334,7 +336,7 @@
     }
 
 
-  //Fechar Sessao
+  //Logout da sessão
   $( "#fechar_sessao" ).click(function(){
 		$.ajax({
 		  method: "POST",
@@ -357,6 +359,8 @@
 		})
 	})
 
+
+//Editando uma atividade
 	$('.btn-editar').click(function(){
       let index = $( "#rowEdit" ).val()
       let atividade = $( "#txtModificarAtividade" ).val()
@@ -413,7 +417,7 @@
       })
   })
 
-  //Criação
+  // Adicionar uma atividade
   $('.btn-criar').click(function(){
 	   let atividade = $( "#txtCriarAtividade" ).val()
      $.ajax({
@@ -465,13 +469,13 @@
      })
 	})
 
-  //Deletar
+  //Deletar atividade
 	$('.btn-deletar-sim').click(function(){
     let index = $( "#rowDelete" ).val()
     $.ajax({
       method: "POST",
       url: "backend/session_manager_auth.php",
-      data: { operation: "remoção", index: index },
+      data: { operation: "deletar", index: index },
     }).done(function(resposta) {
       let obj = JSON.parse(resposta)
       if(obj.status == 400){
