@@ -1,2 +1,2 @@
-# autentifica-o-de-sess-o-via-ajax
-Autentificação de Sessão via AJAX feito em PHP
+# Autentificação de Sessão via AJAX
+Autentificação de Sessão via AJAX feito em PHP.
