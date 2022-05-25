@@ -2,7 +2,7 @@
 	session_start();	
 	date_default_timezone_set('America/Sao_Paulo');
 	
-  $json = file_get_contents('../dados/dados_para_load.json');
+  $json = file_get_contents('../backend/dados/dados_para_load.json');
   $JsonData = json_decode($json,true);
 
   #Fazendo o carregamentos dos dados
